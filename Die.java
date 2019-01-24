@@ -13,14 +13,13 @@ public class Die
     /**
      * Constructor for objects of class Die
      */
-    public Die(int roll)
+    public Die()
     {
        roll = roll();
     }
 
     /**
      * Randomly rolls a die 
-     *
      */
     public int roll()
     {
