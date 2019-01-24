@@ -77,7 +77,7 @@ public class Craps
             {
                 System.out.println("You rolled a " + myRoll1 + "           |");
             }
-            if(myRoll1 > 10)
+            if(myRoll1 >= 10)
             {
                 System.out.println("You rolled a " + myRoll1 + "          |");
             }
@@ -116,7 +116,7 @@ public class Craps
                     {
                         System.out.println("You rolled a " + myRoll2 + "           |");
                     }
-                    if(myRoll2 > 10)
+                    if(myRoll2 >= 10)
                     {
                         System.out.println("You rolled a " + myRoll2 + "          |");
                     }
