@@ -45,6 +45,9 @@ public class Craps
     {
         Dice dice = new Dice(); 
         int totalPlay = 0;
+        double balance = 0; 
+        int  secondRound = 0;  
+        boolean gambler = false;
         while(wannaPlay()) //loop will break if answer is no 
         {
             if(totalPlay == 0)
@@ -58,99 +61,100 @@ public class Craps
                 if(ans.equals("") || ans.substring(0,1).equalsIgnoreCase("y"))
                 {
                     giveInstructions(); 
+
                 }
-            }
-            Scanner in = new Scanner(System.in);
-            System.out.println("Ready to play?");
-            System.out.println("");
-            System.out.println("<Enter> for first roll..."); 
-            in.nextLine(); 
-            int myRoll1 = 0; 
-            int [] diceRoll = dice.rollTwo(); 
-            for(int i = 0; i < diceRoll.length; i++) //for loop totals roll values in 'myRoll1'
-            {
-                myRoll1 += diceRoll[i];
-            }
-            System.out.println("--------FIRST ROLL-------+");
-            //following two if statements only for formatting purposes 
-            if(myRoll1 < 10)
-            {
-                System.out.println("You rolled a " + myRoll1 + "           |");
-            }
-            if(myRoll1 >= 10)
-            {
-                System.out.println("You rolled a " + myRoll1 + "          |");
-            }
-            if(myRoll1 == 7 || myRoll1 == 11)
-            {
-                System.out.println("                         |");
-                System.out.println("       +--------+        |");
-                System.out.println("       |You win!|        |");
-                System.out.println("       +--------+        |");
-                System.out.println("                         |");
-            }
-            else if(myRoll1 == 2 || myRoll1 == 3 || myRoll1 == 12)
-            {
-                System.out.println("                         |");
-                System.out.println("      +----------+       |");
-                System.out.println("      |You loose!|       |");
-                System.out.println("      +----------+       |");
-                System.out.println("                         |");
-            }
-            else
-            { 
-                int myRoll2 = 0; 
-                while(myRoll2 != myRoll1) //will break if roll 2 is equal to roll 1 
+                System.out.println("Ready to play? Good luck...");
+                System.out.println("");
+                System.out.println("<Enter> for first roll..."); 
+                in.nextLine(); 
+                int myRoll1 = 0; 
+                int [] diceRoll = dice.rollTwo(); 
+                for(int i = 0; i < diceRoll.length; i++) //for loop totals roll values in 'myRoll1'
                 {
-                    System.out.println("                         |");
-                    System.out.println("<Enter> to roll again    |"); 
-                    in.nextLine(); 
-                    int[] diceRoll2 = dice.rollTwo(); 
-                    for(int i = 0; i < diceRoll2.length; i++)
-                    {
-                        myRoll2 += diceRoll2[i];
-                    }
-                    System.out.println("---------NEW ROLL--------+");
-                    //following two if statements only for formatting purposes 
-                    if(myRoll2 < 10)
-                    {
-                        System.out.println("You rolled a " + myRoll2 + "           |");
-                    }
-                    if(myRoll2 >= 10)
-                    {
-                        System.out.println("You rolled a " + myRoll2 + "          |");
-                    }
-                    if(myRoll2 == 7) 
-                    {
-                        System.out.println("                         |");
-                        System.out.println("      +----------+       |");
-                        System.out.println("      |You loose!|       |");
-                        System.out.println("      +----------+       |");
-                        System.out.println("                         |");
-                        break;
-                    }
-                    else if(myRoll2 != myRoll1) //sets myRoll2 back to zero for next roll
-                    {
-                        myRoll2 = 0; 
-                    }
+                    myRoll1 += diceRoll[i];
                 }
-                if(myRoll2 == myRoll1)
+                System.out.println("--------FIRST ROLL-------+");
+                //following two if statements only for formatting purposes 
+                if(myRoll1 < 10)
+                {
+                    System.out.println("You rolled a " + myRoll1 + "           |");
+                }
+                if(myRoll1 >= 10)
+                {
+                    System.out.println("You rolled a " + myRoll1 + "          |");
+                }
+                if(myRoll1 == 7 || myRoll1 == 11)
                 {
                     System.out.println("                         |");
                     System.out.println("       +--------+        |");
                     System.out.println("       |You win!|        |");
                     System.out.println("       +--------+        |");
                     System.out.println("                         |");
-                }   
-            }
-            System.out.println("-------------------------+");
-            totalPlay ++;
-        } 
+                }
+                else if(myRoll1 == 2 || myRoll1 == 3 || myRoll1 == 12)
+                {
+                    System.out.println("                         |");
+                    System.out.println("      +----------+       |");
+                    System.out.println("      |You lose! |       |");
+                    System.out.println("      +----------+       |");
+                    System.out.println("                         |");
+                }
+                else
+                { 
+                    int myRoll2 = 0; 
+                    while(myRoll2 != myRoll1) //will break if roll 2 is equal to roll 1 
+                    {
+                        System.out.println("                         |");
+                        System.out.println("<Enter> to roll again    |"); 
+                        in.nextLine(); 
+                        int[] diceRoll2 = dice.rollTwo(); 
+                        for(int i = 0; i < diceRoll2.length; i++)
+                        {
+                            myRoll2 += diceRoll2[i];
+                        }
+                        System.out.println("---------NEW ROLL--------+");
+                        //following two if statements only for formatting purposes 
+                        if(myRoll2 < 10)
+                        {
+                            System.out.println("You rolled a " + myRoll2 + "           |");
+                        }
+                        if(myRoll2 >= 10)
+                        {
+                            System.out.println("You rolled a " + myRoll2 + "          |");
+                        }
+                        if(myRoll2 == 7) 
+                        {
+                            System.out.println("                         |");
+                            System.out.println("      +----------+       |");
+                            System.out.println("      |You lose! |       |");
+                            System.out.println("      +----------+       |");
+                            System.out.println("                         |");
+                            break;
+                        }
+                        else if(myRoll2 != myRoll1) //sets myRoll2 back to zero for next roll
+                        {
+                            myRoll2 = 0; 
+                        }
+                        secondRound++; 
+                    }
+                    if(myRoll2 == myRoll1)
+                    {
+                        System.out.println("                         |");
+                        System.out.println("       +--------+        |");
+                        System.out.println("       |You win!|        |");
+                        System.out.println("       +--------+        |");
+                        System.out.println("                         |");
+                    }
+                }
+                System.out.println("-------------------------+");
+                totalPlay ++;
+            } 
 
-        System.out.println("");
-        System.out.println("Have a nice day!"); 
-        System.out.println(""); 
-        System.out.println("Program terminating...");
+            System.out.println("");
+            System.out.println("Have a nice day!"); 
+            System.out.println(""); 
+            System.out.println("Program terminating...");
+        }
     }
 }
 
